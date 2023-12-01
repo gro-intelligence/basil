@@ -16,6 +16,8 @@
 
 package io.github.basilapi.basil.invoke;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import io.github.basilapi.basil.core.InvocationResult;
 import io.github.basilapi.basil.core.exceptions.ApiInvocationException;
 import org.apache.commons.io.IOUtils;
@@ -38,9 +40,12 @@ import java.nio.charset.StandardCharsets;
  */
 public class DirectExecutor implements QueryExecutor {
 
+	private static Logger log = LoggerFactory.getLogger(DirectExecutor.class);
+
 	@Override
 	public InvocationResult execute(Query q, String endpoint, HttpClient authenticator) throws ApiInvocationException {
 		QueryExecution qe = QueryExecutionFactory.sparqlService(endpoint, q, authenticator);
+		log.debug("QUERY is: " + q.toString());
 		if (q.isSelectType()) {
 			return new InvocationResult(qe.execSelect(), q);
 		} else if (q.isConstructType()) {

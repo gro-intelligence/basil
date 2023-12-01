@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
  * @since 0.5.0
  */
 public final class AliasUtils {
-	final static Pattern REGEX = Pattern.compile("^[0-9a-zA-Z\\-]{5,16}$");
+	final static Pattern REGEX = Pattern.compile("^[0-9a-zA-Z\\-\\_]{3,300}$");
 
 	/**
 	 * An alias is safe if it matches {AliasUtils.REGEX}

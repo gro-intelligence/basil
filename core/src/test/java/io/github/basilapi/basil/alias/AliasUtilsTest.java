@@ -64,7 +64,7 @@ public class AliasUtilsTest {
 	public void aliasTooShort4() {
 		log.info("{}", testName.getMethodName());
 		try {
-			AliasUtils.test(makeSet("abcd"));
+			AliasUtils.test(makeSet("ab"));
 			Assert.assertTrue(testName.getMethodName(), false);
 		} catch (IOException io) {
 			Assert.assertTrue(testName.getMethodName(), true);
@@ -75,7 +75,7 @@ public class AliasUtilsTest {
 	public void aliasTooLong() {
 		log.info("{}", testName.getMethodName());
 		try {
-			AliasUtils.test(makeSet("aaaaaaaaaaaaaaaaX"));
+			AliasUtils.test(makeSet("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaRealMonsters"));
 			Assert.assertTrue(testName.getMethodName(), false);
 		} catch (IOException io) {
 			Assert.assertTrue(testName.getMethodName(), true);
@@ -140,7 +140,7 @@ public class AliasUtilsTest {
 	@Test
 	public void aliasInvalidChars() {
 		log.info("{}", testName.getMethodName());
-		for (String s : new String[] { " ", "_", "\"", "'", "?", "<", ">" }) {
+		for (String s : new String[] { " ", "\"", "'", "?", "<", ">" }) {
 			try {
 				AliasUtils.test(makeSet("aaaaaaa" + s));
 				Assert.assertTrue(testName.getMethodName(), false);
